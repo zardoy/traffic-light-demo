@@ -1,0 +1,10 @@
+{
+    // the file is relativly big to inline, see https://github.com/zardoy/tsconfig/blob/main/tsconfig.json
+    "extends": "@zardoy/tsconfig/tsconfig",
+    "compilerOptions": {
+        "jsx": "preserve",
+        // for ts-loader
+        "noEmit": false
+    },
+    "include": ["src"]
+}
