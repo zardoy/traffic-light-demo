@@ -48,16 +48,7 @@ const config = (env = {}) => {
                 },
                 {
                     test: /\.scss$/,
-                    use: [
-                        'vue-style-loader',
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                url: false,
-                            },
-                        },
-                        'sass-loader',
-                    ],
+                    use: ['vue-style-loader', 'css-loader', 'sass-loader'],
                 },
             ],
         },
@@ -72,17 +63,17 @@ const config = (env = {}) => {
                 // just for libs
                 'process.env.NODE_ENV': JSON.stringify(mode),
             }),
-            ...(isProd
-                ? [
-                      new CopyWebpackPlugin({
-                          patterns: [
-                              {
-                                  from: 'public',
-                              },
-                          ],
-                      }),
-                  ]
-                : []),
+            // ...(isProd
+            //     ? [
+            //           new CopyWebpackPlugin({
+            //               patterns: [
+            //                   {
+            //                       from: 'public',
+            //                   },
+            //               ],
+            //           }),
+            //       ]
+            //     : []),
         ],
         optimization: {
             minimize: isProd,
