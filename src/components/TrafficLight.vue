@@ -128,6 +128,7 @@ function changeLight(signalIndex: number) {
             :disabled="forceDisableLight || light !== program[trafficLightState.signalIndex]![0]"
             :css-color="allSignals[light]?.cssColorOverride ?? light"
             :current-cooldown="light === program[trafficLightState.signalIndex]![0] && !allSignals[light]?.hideCooldown && trafficLightState.currentCooldown"
+            :data-test="light"
             class="segment"
             role="button"
             @click="changeLight(signalIndex)"
