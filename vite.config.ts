@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import vuePlugin from '@vitejs/plugin-vue'
 import { defineConfig } from 'vite'
 
@@ -5,4 +6,7 @@ import { defineConfig } from 'vite'
 export default defineConfig({
     base: './',
     plugins: [vuePlugin()],
+    test: {
+        environment: 'happy-dom',
+    },
 })
