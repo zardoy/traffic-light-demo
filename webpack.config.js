@@ -5,7 +5,6 @@ const fs = require('fs')
 const path = require('path')
 const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 /** @type {() => import('webpack').Configuration} */
 const config = (env = {}) => {
@@ -63,17 +62,6 @@ const config = (env = {}) => {
                 // just for libs
                 'process.env.NODE_ENV': JSON.stringify(mode),
             }),
-            // ...(isProd
-            //     ? [
-            //           new CopyWebpackPlugin({
-            //               patterns: [
-            //                   {
-            //                       from: 'public',
-            //                   },
-            //               ],
-            //           }),
-            //       ]
-            //     : []),
         ],
         optimization: {
             minimize: isProd,
