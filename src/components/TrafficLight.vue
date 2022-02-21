@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, reactive, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import LightSection from './LightSection.vue'
 
@@ -101,14 +101,16 @@ watch(
 watch(trafficLightState, () => {
     localStorage.setItem(TRAFFIC_LIGHT_MEMORY_KEY, JSON.stringify(trafficLightState))
 })
+let interval: number
 onMounted(() => {
     // automatic light control
-    setInterval(() => {
+    interval = setInterval(() => {
         if (--trafficLightState.currentCooldown === 0)
             // looping it
             changeLight(trafficLightState.signalIndex === program.length - 1 ? 0 : trafficLightState.signalIndex + 1)
     }, 1000)
 })
+onUnmounted(() => interval && clearInterval(interval))
 
 function changeLight(signalIndex: number) {
     if (signalIndex === -1) signalIndex = 0

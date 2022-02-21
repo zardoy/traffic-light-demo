@@ -4,7 +4,8 @@
     "compilerOptions": {
         "jsx": "preserve",
         // for ts-loader
-        "noEmit": false
+        "noEmit": false,
+        "types": ["@zardoy/tsconfig"]
     },
     "include": ["src"]
 }
