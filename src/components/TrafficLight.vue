@@ -50,7 +50,7 @@ const trafficLightState = reactive({
     signalIndex: 0,
     currentCooldown: 0,
 })
-let forceDisableLight = ref(false)
+const forceDisableLight = ref(false)
 
 const lightProgram = computed(() => program[trafficLightState.signalIndex])
 
@@ -63,6 +63,7 @@ watch(
             internalParamChange = false
             return
         }
+
         const initialUpdate = oldValue === undefined
         if (initialUpdate) {
             const rawValue = localStorage.getItem(TRAFFIC_LIGHT_MEMORY_KEY)
@@ -103,10 +104,9 @@ watch(trafficLightState, () => {
 onMounted(() => {
     // automatic light control
     setInterval(() => {
-        if (--trafficLightState.currentCooldown === 0) {
+        if (--trafficLightState.currentCooldown === 0)
             // looping it
             changeLight(trafficLightState.signalIndex === program.length - 1 ? 0 : trafficLightState.signalIndex + 1)
-        }
     }, 1000)
 })
 
@@ -114,7 +114,7 @@ function changeLight(signalIndex: number) {
     if (signalIndex === -1) signalIndex = 0
     internalParamChange = true
     const [light, durationSec] = program[signalIndex]!
-    router.push(`/${light}`)
+    void router.push(`/${light}`)
     trafficLightState.signalIndex = signalIndex
     trafficLightState.currentCooldown = durationSec
 }
@@ -132,8 +132,7 @@ function changeLight(signalIndex: number) {
             class="segment"
             role="button"
             @click="changeLight(signalIndex)"
-        >
-        </LightSection>
+        />
     </div>
 </template>
 

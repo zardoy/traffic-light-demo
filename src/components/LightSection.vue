@@ -7,6 +7,7 @@ withDefaults(
     }>(),
     {
         disabled: false,
+        currentCooldown: false,
     },
 )
 </script>
