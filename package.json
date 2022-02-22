@@ -5,7 +5,7 @@
     "license": "MIT",
     "scripts": {
         "start": "webpack serve",
-        "build": "webpack --env prod",
+        "build": "vue-tsc --noEmit && webpack --env prod",
         "start:vite": "vite",
         "build:vite": "vite build",
         "ci": "pnpm build && pnpm start-test \"vite preview --port 3000\" http-get://localhost:3000 test:cypress",
