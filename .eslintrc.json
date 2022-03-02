@@ -1,5 +1,5 @@
 {
-    // rules are quite huge to inline there, .vue files are not linted yet
+    // rules are quite huge to inline there, .vue files are linted
     "extends": "zardoy/vue",
     "rules": {}
 }
